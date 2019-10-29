@@ -1,0 +1,27 @@
+{
+    "compilerOptions": {
+        "outDir": "./dist/",
+        "sourceMap": true,
+        "noImplicitAny": false,
+        "module": "commonjs",
+        "target": "es6",
+        "jsx": "react",
+        "esModuleInterop" : true,
+        "allowJs": true,
+        "moduleResolution": "node",
+        "allowSyntheticDefaultImports": true,
+        "typeRoots" : [
+            "./node_modules/@types",
+            "./@types"
+        ],
+        "strict": false,
+        "strictNullChecks": false,
+
+        "baseUrl": "./",
+        "resolveJsonModule": true, 
+        "paths": {
+
+        }
+    },
+    "exclude": ["node_modules"]
+}

@@ -1,0 +1,55 @@
+{
+  "dependencies": {
+    "@babel/core": "^7.5.5",
+    "@material-ui/core": "^4.5.1",
+    "@types/react": "^16.8.23",
+    "@types/react-dom": "^16.8.5",
+    "awesome-typescript-loader": "^5.2.1",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.6",
+    "babel-polyfill": "^6.26.0",
+    "copy-webpack-plugin": "^5.0.4",
+    "css-loader": "^3.2.0",
+    "deepmerge": "^4.2.1",
+    "express": "^4.17.1",
+    "formik": "^1.5.8",
+    "formik-material-ui": "^0.0.22",
+    "html-webpack-plugin": "^3.2.0",
+    "module-alias": "^2.2.2",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "source-map-loader": "^0.2.4",
+    "style-loader": "^1.0.0",
+    "ts-loader": "^6.0.4",
+    "tslint": "^5.18.0",
+    "tslint-loader": "^3.5.4",
+    "typescript": "^3.5.3",
+    "webpack": "^4.37.0",
+    "webpack-cli": "^3.3.6",
+    "webpack-dev-server": "^3.9.0",
+    "webpack-merge": "^4.2.1",
+    "yup": "^0.27.0"
+  },
+  "scripts": {
+    "start:dev": "webpack-dev-server --open --hot --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js",
+    "test": "jest"
+  },
+  "_moduleAliases": {
+    "@components": "src/components"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^9.3.0",
+    "@types/enzyme": "^3.10.3",
+    "@types/enzyme-adapter-react-16": "^1.0.5",
+    "@types/jest": "^24.0.19",
+    "@types/yup": "^0.26.24",
+    "check-prop-types": "^1.1.2",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.15.1",
+    "jest": "^24.9.0",
+    "jest-enzyme": "^7.1.1",
+    "ts-jest": "^24.1.0"
+  }
+}
