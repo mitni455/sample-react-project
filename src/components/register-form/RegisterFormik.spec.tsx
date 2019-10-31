@@ -1,42 +1,108 @@
 import React from 'react';
-import { ShallowWrapper, shallow } from 'enzyme';
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, RenderResult } from '@testing-library/react';
+import '@testing-library/jest-dom';
 
 import RegisterForm from './RegisterForm';
 import RegisterFormik from './RegisterFormik';
 import { Field } from 'formik';
 import { fieldToSelect } from 'formik-material-ui';
+import { doesNotReject } from 'assert';
+
+/**
+ * @import Services
+ */
+import MsManagementService from '../../services/ms-management.service';
 
 describe("RegisterFormik", () => {
 
-    describe("", () => {
+    describe("Render", () => {
+
+        let renderedComponent: RenderResult;
 
         
 
-    });
+        it ("Should render without any errors", () => {
 
-    test("Should update an input when it is changed", () => {
+            const renderedComponent = render(<RegisterFormik />);
 
-        const wrapper = shallow(<RegisterFormik />);
+            expect(renderedComponent.getByText('Registration form')).toBeDefined();
 
-        // -- Get all fields in the form
-        const fields: ShallowWrapper = wrapper.find('Formik').dive().find(RegisterForm).dive().find(Field);
-
-        // -- Selecting the last name input from this list of fields
-        const field: ShallowWrapper = fields.find('[name="lastname"]');
-
-        // const field = fields.findWhere((field: ShallowWrapper) => {
-        //     return field.prop('name') === "lastname";
-        // })
-
-        // field.simulate('change', {
-
-        // })
-        // fireEvent.change()
-
-        console.log(fields.find('[name="lastname"]').debug());
-        expect(1).toBe(1);
+        })
 
     })
+
+    describe("Integration test", () => {
+
+        let renderedComponent: RenderResult;
+
+        beforeEach(() => {
+            renderedComponent = render(<RegisterFormik />);
+        })
+
+        it ("Should create a user when the input validation passes and the submit button is clicked", (done) => {
+
+            const expectedUserData = {
+                firstname : "John",
+                lastname : "Doe",
+                email : "john.doe@gmail.com",
+                phone : "0211234567"
+            }
+
+            const firstNameInput = renderedComponent.getByLabelText('First Name');
+            const lastNameInput = renderedComponent.getByLabelText("Last Name");
+            const emailInput = renderedComponent.getByLabelText("Email");
+            const phoneInput = renderedComponent.getByLabelText("Mobile Phone");
+            const submitButton = renderedComponent.getByTestId("register-submit-button");
+            const createUserSpy = jest.spyOn(MsManagementService, 'apiCreateUser')
+                .mockImplementation(async (userData: any) => {
+                    expect(userData).toEqual(expectedUserData);
+
+                    createUserSpy.mockRestore();
+                    done();
+                })
+
+
+            fireEvent.change(firstNameInput, {
+                target : {
+                    name : "firstname",
+                    value : expectedUserData.firstname
+                }
+            })
+            fireEvent.change(lastNameInput, {
+                target : {
+                    name : "lastname",
+                    value : expectedUserData.lastname
+                }
+            })
+            fireEvent.change(emailInput, {
+                target : {
+                    name : "email",
+                    value : expectedUserData.email
+                }
+            })
+            fireEvent.change(phoneInput, {
+                target : {
+                    name : "phone",
+                    value : expectedUserData.phone
+                }
+            })
+            fireEvent.click(submitButton);
+        })
+
+        it ("Should disable the onSubmit function when the input fields are invalid", (done) => {
+
+            const createUserSpy = jest.spyOn(MsManagementService, 'apiCreateUser')
+                .mockImplementation(async (userData: any) => {})
+
+            const submitButton = renderedComponent.getByTestId("register-submit-button");
+            fireEvent.click(submitButton);
+
+            setTimeout(() => {
+                expect(createUserSpy).toBeCalledTimes(0);
+                done();
+            }, 1);
+        })
+
+    });
 
 })

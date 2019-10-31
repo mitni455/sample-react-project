@@ -232,10 +232,10 @@ describe("RegisterForm Component", () => {
                 phone : "0211234567"
             }
 
-            const onSubmitFunc = (values, actions) => {
+            const onSubmitFunc = jest.fn((values, actions) => {
                 expect(values).toEqual(expectedValues);
                 done()
-            }
+            })
 
             const renderedComponent = render(
                 <Formik
@@ -285,6 +285,7 @@ describe("RegisterForm Component", () => {
             })
 
             fireEvent.click(submitButton);
+            
         })
 
         it ("Should not submit if there are input validation errors", (done) => {
@@ -298,10 +299,8 @@ describe("RegisterForm Component", () => {
                 phone : "0211234567"
             }
 
-            const onSubmitFunc = (values, actions) => {
-                expect(true).toBeFalsy();
-                done();
-            }
+           
+            const onSubmitFunc = jest.fn();
 
             const renderedComponent = render(
                 <Formik
@@ -325,8 +324,9 @@ describe("RegisterForm Component", () => {
             fireEvent.click(submitButton);
 
             setTimeout(() => {
+                expect(onSubmitFunc).toBeCalledTimes(0);
                 done();
-            }, 2000);
+            }, 1);
 
         })
 

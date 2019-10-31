@@ -11,6 +11,11 @@ import { Formik, FormikProps } from 'formik';
 import RegisterForm from './RegisterForm';
 
 /**
+ * @import Services
+ */
+import MsManagementService from '../../services/ms-management.service';
+
+/**
  * @import Schemas
  */
 import { registerFormSchema } from '../../schemas/register-form.schema';
@@ -33,8 +38,10 @@ class RegisterFormik extends React.Component<TProperty, TState>
     {
         const formikData = {
             initialValues : {
-                firstname : "John",
-                lastname: "Doe"
+                firstname : "",
+                lastname: "",
+                email : "",
+                phone: ""
             },
 
         }
@@ -42,19 +49,25 @@ class RegisterFormik extends React.Component<TProperty, TState>
         return (
             <div className="registerFormik">
                 <h1>
-                    This is the register formik
+                    Registration form
                 </h1>
                 <Formik
                     initialValues={formikData.initialValues}
                     onSubmit={(values, actions) => {
-                        setTimeout(() => {
-                            alert(JSON.stringify(values, null, 2))
-                        }, 1000);
+                        try
+                        {
+                            MsManagementService.apiCreateUser(values);
+                        }
+                        catch(err)
+                        {
+                            console.error("err", err);
+                        }
+
                     }}
                     validationSchema={registerFormSchema}
                 >
                     { (render: FormikProps<any>) => {
-                        return <RegisterForm 
+                        return <RegisterForm
                                     // handleSubmit={render.handleSubmit}
                                     // handleChange={render.handleChange}
                                     // handleBlur={render.handleChange}
