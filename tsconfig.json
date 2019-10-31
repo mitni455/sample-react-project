@@ -9,6 +9,7 @@
         "esModuleInterop" : true,
         "allowJs": true,
         "moduleResolution": "node",
+        
         "allowSyntheticDefaultImports": true,
         "typeRoots" : [
             "./node_modules/@types",
@@ -16,12 +17,15 @@
         ],
         "strict": false,
         "strictNullChecks": false,
+        "resolveJsonModule": true, 
 
         "baseUrl": "./",
-        "resolveJsonModule": true, 
         "paths": {
 
-        }
+        },
+        "rootDirs": [
+            "src"
+        ]
     },
     "exclude": ["node_modules"]
 }
