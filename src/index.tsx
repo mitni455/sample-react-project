@@ -15,11 +15,10 @@ import HomePage from './pages/HomePage';
 
 const renderApp = () => {
 
-	ReactDOM.render((
-		<div>
+	ReactDOM.render(
+		(<div>
             <HomePage />
-        </div>
-		), 
+		</div>), 
 		document.getElementById('root')
     );
     

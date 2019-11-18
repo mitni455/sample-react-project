@@ -2,7 +2,6 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 import { withKnobs, text, boolean, number, object as objectAddOn, array as arrayAddOn, select, radios, optionsKnob, files, date, button as buttonAddOn } from '@storybook/addon-knobs';
-import { display, height } from '@material-ui/system';
 
 // import { Button } from '@storybook/react/demo';
 
@@ -23,7 +22,7 @@ const OptionalDecorator = (storyFn) => {
  * @param {String} categoryName - the tab name 
  * @param {NodeModule} module - no diea what this does? 
  */
-const stories = storiesOf('Action Addons', module);
+const stories = storiesOf('Knobs Addons', module);
 
 /** 
  * Stories 

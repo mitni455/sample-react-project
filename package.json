@@ -38,7 +38,7 @@
     "build": "webpack --config webpack.prod.js",
     "test": "jest --watch-all",
     "story": "start-storybook -p 6006",
-    "story:build": "build-storybook"
+    "story:build": "build-storybook -c .storybook -o docs/storybook"
   },
   "_moduleAliases": {
     "@components": "src/components"
