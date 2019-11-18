@@ -1,27 +1,73 @@
 {
     "compilerOptions": {
+
+        "* @param: {string} outDir": "Redirect output structure to the directory.", 
         "outDir": "./dist/",
+
+        "* @param: {boolean} sourceMap": "Generates corresponding '.map' file. This is used in chrome debug tools to map any errors to the ts source rather than the compiled bundle which wouldnt be that helpful", 
         "sourceMap": true,
+
+        "* @param: {boolean} noImplicitAny": "Warn on expressions and declarations with an implied 'any' type.", 
         "noImplicitAny": false,
+
+        "* @param: {none|commonjs|amd|system|umd|es2015|esnext} module": "Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015' or 'esnext'.", 
         "module": "commonjs",
+
+        "* @param: {es3|es5|es6|es2015|es2016|es2017|es2018|es2019|es2020|esnext} target": "Specify ECMAScript target version. Permitted values are 'es3', 'es5', 'es6', 'es2015', 'es2016', 'es2017', 'es2018', 'es2019', 'es2020' or 'esnext'.", 
         "target": "es6",
+
+        "* @param: {preserve|react|react-native} jsx": "Specify JSX code generation: 'preserve', 'react', or 'react-native'.", 
         "jsx": "react",
+
+        "* @param: {boolean} esModuleInterop": "Emit '__importStar' and '__importDefault' helpers for runtime babel ecosystem compatibility and enable '--allowSyntheticDefaultImports' for typesystem compatibility. Requires TypeScript version 2.7 or later.", 
         "esModuleInterop" : true,
+
+        "* @param: {boolean} allowJs": "Allow javascript files to be compiled.", 
         "allowJs": true,
+
+        "* @param: {node|classic} moduleResolution": "Specifies module resolution strategy: 'node' (Node) or 'classic' (TypeScript pre 1.6)",
         "moduleResolution": "node",
+        
+        "* @param: {boolean} allowSyntheticDefaultImports": "Allow default imports from modules with no default export. This does not affect code emit, just typechecking.",
         "allowSyntheticDefaultImports": true,
+
+        "* @param: {Array<string>} typeRoots": "Specify list of directories for type definition files to be included. Requires TypeScript version 2.0 or later", 
         "typeRoots" : [
             "./node_modules/@types",
             "./@types"
         ],
+
+        "* @param: {boolean} strict": "Enable all strict type checking options. Requires TypeScript version 2.3 or later.", 
         "strict": false,
+
+        "* @param: {boolean} strictNullChecks": "Enable strict null checks. Requires TypeScript version 2.0 or later.", 
         "strictNullChecks": false,
 
-        "baseUrl": "./",
+        "* @param: {boolean} resolveJsonModule": "Include modules imported with '.json' extension. Requires TypeScript version 2.9 or later.", 
         "resolveJsonModule": true, 
-        "paths": {
 
-        }
+        "* @param: {string} baseUrl": "Base directory to resolve non-relative module names.", 
+        "baseUrl": "./",
+
+        "* @param: {IPaths} paths": "Specify path mapping to be computed relative to baseUrl option.", 
+        "paths": {
+            "@config/*":        ["src/config/*"], 
+            "@common/*":        ["src/common/*"], 
+            "@components/*":    ["src/components/*"], 
+            "@services/*":      ["src/services/*"],
+            "@models/*":        ["src/models/*"],
+            "@enums/*":         ["src/enums/*"],
+            "@errors/*":        ["src/models/errors/*"],
+            "@redux/*":         ["src/redux/*"],
+            "@mocks/*":         ["test/mocks/*"],
+            "@utils/*":         ["src/utils/*"]
+        },
+        "* @param: {Array<string>} rootDirs": "Specify list of root directories to be used when resolving modules.", 
+        "rootDirs": [
+            "src"
+        ]
     },
+
+    "* @param: {Array<string>} exclude": "Specifies a list of files to be excluded from compilation. The 'exclude' property only affects the files included via the 'include' property and not the 'files' property. Glob patterns require TypeScript version 2.0 or later.", 
     "exclude": ["node_modules"]
 }

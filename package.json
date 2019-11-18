@@ -5,7 +5,6 @@
     "@types/moxios": "^0.4.9",
     "@types/react": "^16.8.23",
     "@types/react-dom": "^16.8.5",
-    "awesome-typescript-loader": "^5.2.1",
     "axios": "^0.19.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^8.0.6",
@@ -37,23 +36,35 @@
   "scripts": {
     "start:dev": "webpack-dev-server --open --hot --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
-    "test": "jest --watch-all"
+    "test": "jest --watch-all",
+    "story": "start-storybook -p 6006",
+    "story:build": "build-storybook -c .storybook -o docs/storybook"
   },
   "_moduleAliases": {
     "@components": "src/components"
   },
   "devDependencies": {
+    "@storybook/addon-actions": "^5.2.5",
+    "@storybook/addon-info": "^5.2.5",
+    "@storybook/addon-knobs": "^5.2.5",
+    "@storybook/addon-links": "^5.2.5",
+    "@storybook/addon-notes": "^5.2.5",
+    "@storybook/addons": "^5.2.5",
+    "@storybook/react": "^5.2.5",
     "@testing-library/jest-dom": "^4.2.0",
     "@testing-library/react": "^9.3.0",
     "@types/enzyme": "^3.10.3",
     "@types/enzyme-adapter-react-16": "^1.0.5",
     "@types/jest": "^24.0.19",
+    "@types/storybook__react": "^4.0.2",
     "@types/yup": "^0.26.24",
+    "awesome-typescript-loader": "^5.2.1",
     "check-prop-types": "^1.1.2",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.15.1",
     "jest": "^24.9.0",
     "jest-enzyme": "^7.1.1",
+    "react-docgen-typescript-loader": "^3.3.0",
     "ts-jest": "^24.1.0"
   }
 }
